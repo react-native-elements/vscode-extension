@@ -1,0 +1,197 @@
+{
+  "name": "snippets",
+  "displayName": "React Native Elements Snippets",
+  "description": "Snippets for React Native Elements ",
+  "private": true,
+  "version": "1.1.1",
+  "publisher": "rne",
+  "keywords": [
+    "snippets",
+    "react-native",
+    "react-native-elements"
+  ],
+  "contributors": [
+    {
+      "name": "Arpit Bhalla",
+      "url": "https://github.com/arpitBhalla"
+    }
+  ],
+  "main": "./build/extension.js",
+  "scripts": {
+    "prebuild": "ts-node scripts/generateIndex.ts && ts-node scripts/generateREADME.ts && prettier --write README.md ",
+    "prerelease": "npm run build && git add . && git commit -m 'PreRelease'  && release-it ",
+    "release": "vsce publish",
+    "build": "npm run -S esbuild-base -- --minify",
+    "esbuild": "npm run -S esbuild-base",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=build/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild-watch": "npm run -S esbuild-base -- --sourcemap --watch",
+    "test-compile": "tsc -p ./",
+    "semantic-release": "semantic-release"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arpitBhalla/rne-snippets"
+  },
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^0.10.5"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.rneAvatar",
+        "title": "Insert Avatar Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneAvatarBadge",
+        "title": "Insert Avatar with Badge Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneBadge",
+        "title": "Insert Badge Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneBadgeMini",
+        "title": "Insert Mini Badge Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneBottomSheet",
+        "title": "Insert Bottom Sheet Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneButton",
+        "title": "Insert Simple Button Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneButtonGroup",
+        "title": "Insert Button Group Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneButtonIcon",
+        "title": "Insert Button with Icon Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneButtonType",
+        "title": "Insert Button with types Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneCard",
+        "title": "Insert Basic Card Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneCheckBox",
+        "title": "Insert CheckBox Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneChip",
+        "title": "Insert Simple Chip Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneChipIcon",
+        "title": "Insert Chip with Icon Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneDivider",
+        "title": "Insert Divider Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneFAB",
+        "title": "Insert Floating Action Button Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneIcon",
+        "title": "Insert Icon  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneImage",
+        "title": "Insert Image Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneLinearProgress",
+        "title": "Insert Linear Progress Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneLinearProgressIndeterminate",
+        "title": "Insert Linear Progress indeterminate variant Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneRadio",
+        "title": "Insert CheckBox Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneSearchBar",
+        "title": "Insert Search Bar Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneSlider",
+        "title": "Insert Slider Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneSpeedDial",
+        "title": "Insert Speed Dial Wrapper Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneSpeedDialAction",
+        "title": "Insert Speed Dial Action Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneText",
+        "title": "Insert Text Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneuCircularSlider",
+        "title": "Insert Universal Circular Slider Component",
+        "category": "React Native Elements Snippets"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/jscodeshift": "^0.11.0",
+    "@types/react-dom": "^17.0.3",
+    "@types/shallowequal": "^1.1.1",
+    "esbuild": "^0.11.18",
+    "prettier": "^2.2.1",
+    "release-it": "^14.6.1",
+    "ts-node": "^9.1.1",
+    "vsce": "^1.88.0",
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "jscodeshift": "^0.12.0",
+    "jscodeshift-choose-parser": "^2.0.0"
+  }
+}
