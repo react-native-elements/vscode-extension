@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import loadSnippets from "./newSnip";
+import loadSnippets from "./snippets";
 import getExistingImports from "./getExistingImports";
 import { getSnippetImports } from "./utils";
 class RNECompletionItem extends vscode.CompletionItem {

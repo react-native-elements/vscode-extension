@@ -2,7 +2,7 @@
 
 ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/i/rne.snippets?color=blue&style=flat-square) ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/rne.snippets?style=flat-square) ![Visual Studio Marketplace Rating (Stars)](https://img.shields.io/visual-studio-marketplace/stars/rne.snippets?style=flat-square)
 
-![ScreenShot](https://i.ibb.co/fNgK8r9/Screenshot-20210504192608-991x341.png)
+![ScreenShot](./img/Screenshot.png)
 
 ## Installation
 

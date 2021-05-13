@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import loadSnippets from "../src/newSnip";
+import loadSnippets from "../src/snippets";
 
 const table: Array<string> = [];
 const markdown: Array<string> = [];
