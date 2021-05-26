@@ -179,6 +179,23 @@
       }
     ]
   },
+  "release": {
+    "verifyConditions": [
+      "semantic-release-vsce",
+      "@semantic-release/github"
+    ],
+    "prepare": {
+      "path": "semantic-release-vsce",
+      "packageVsix": true
+    },
+    "publish": [
+      "semantic-release-vsce",
+      {
+        "path": "@semantic-release/github",
+        "assets": "*.vsix"
+      }
+    ]
+  },
   "devDependencies": {
     "@types/jscodeshift": "^0.11.0",
     "@types/react-dom": "^17.0.3",
@@ -186,6 +203,8 @@
     "esbuild": "^0.11.18",
     "prettier": "^2.2.1",
     "release-it": "^14.6.1",
+    "semantic-release": "^17.0.0",
+    "semantic-release-vsce": "^3.3.0",
     "ts-node": "^9.1.1",
     "vsce": "^1.88.0",
     "vscode": "^1.1.37"
