@@ -9,7 +9,6 @@
 - **Trigger Suggest** (<kbd>⌃</kbd><kbd>Space</kbd> on macOS) and then type in the name; or you can
   enable the **Editor: Tab Completion** setting, then type the name of the
   snippet and press <kbd>Tab</kbd>.
-- Execute the corresponding **editor commands** like `Material-UI: insert <Button>` (or even better, make keybindings for them!).
 
 ## Features
 
