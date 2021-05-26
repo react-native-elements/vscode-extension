@@ -4,9 +4,18 @@
 
 ![ScreenShot](./img/Screenshot.png)
 
-## Highlights
+**Note:** There are two ways to insert these:
 
-- Blah Blah
+- **Trigger Suggest** (<kbd>⌃</kbd><kbd>Space</kbd> on macOS) and then type in the name; or you can
+  enable the **Editor: Tab Completion** setting, then type the name of the
+  snippet and press <kbd>Tab</kbd>.
+- Execute the corresponding **editor commands** like `Material-UI: insert <Button>` (or even better, make keybindings for them!).
+
+## Features
+
+- Works in JS/X and TSX
+- Automatically adds missing imports when a snippet is inserted (as long as it succeeds in parsing the entire file)
+- Supports `React Native Elements Universe` Package
 
 ## Installation
 
