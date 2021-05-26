@@ -184,6 +184,9 @@
       "semantic-release-vsce",
       "@semantic-release/github"
     ],
+    "branches": [
+      "main"
+    ],
     "prepare": {
       "path": "semantic-release-vsce",
       "packageVsix": true
