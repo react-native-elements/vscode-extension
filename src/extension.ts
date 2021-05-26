@@ -158,14 +158,15 @@ export async function activate(
         : snippet.body
       ).replace(/^\n|\n$/gm, "");
 
-      let extendedDoc = `**React Native Elements** \n\n**${description.trim()}**`;
+      let extendedDoc = `**${description.trim()}**`;
 
       extendedDoc += docKey
         ? `\n\n **Documentation:** [Click here](https://reactnativeelements.com/docs/${docKey})`
         : "";
-      extendedDoc += previewURL
-        ? `\n\n **Preview:** \n\n ![${prefix}](${previewURL}) `
-        : "";
+      extendedDoc += `\n\n **Preview:** \n\n ![${prefix}](${
+        previewURL ||
+        `https://raw.githubusercontent.com/arpitBhalla/rne.snippets/next/img/${prefix}.png`
+      }) `;
 
       const completion = new RNECompletionItem(prefix);
       completion.insertText = new vscode.SnippetString(body);

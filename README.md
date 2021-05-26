@@ -1,8 +1,12 @@
 # React Native Elements Snippets
 
-![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/i/rne.snippets?color=blue&style=flat-square) ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/rne.snippets?style=flat-square) ![Visual Studio Marketplace Rating (Stars)](https://img.shields.io/visual-studio-marketplace/stars/rne.snippets?style=flat-square)
+![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/i/rne.snippets?color=blue&style=flat-square) ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/rne.snippets?style=flat-square) ![Visual Studio Marketplace Rating (Stars)](https://img.shields.io/visual-studio-marketplace/stars/rne.snippets?style=flat-square)[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 ![ScreenShot](./img/Screenshot.png)
+
+## Highlights
+
+- Blah Blah
 
 ## Installation
 
