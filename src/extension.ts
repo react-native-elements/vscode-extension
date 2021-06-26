@@ -165,7 +165,7 @@ export async function activate(
         : "";
       extendedDoc += `\n\n **Preview:** \n\n ![${prefix}](${
         previewURL ||
-        `https://raw.githubusercontent.com/arpitBhalla/rne.snippets/next/img/${prefix}.png`
+        `https://cdn.jsdelivr.net/gh/react-native-elements/snippets/img/${prefix}.png`
       }) `;
 
       const completion = new RNECompletionItem(prefix);
