@@ -110,8 +110,10 @@ function parse(filename: string) {
     imports,
     body: compiled?.code
       ?.replace("export {};", "")
+      .replace(/;$/, "")
       .replace(/\$(?!#|\{)/g, () => "$" + String(counter++))
-      .replace(/#/g, () => String(counter++)),
+      .replace(/#/g, () => String(counter++))
+      .trim(),
     description,
     docKey,
   };

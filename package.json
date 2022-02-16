@@ -16,6 +16,9 @@
       "url": "https://github.com/arpitBhalla"
     }
   ],
+  "engines": {
+    "vscode": "^1.22.0"
+  },
   "main": "./build/extension.js",
   "scripts": {
     "prebuild": "ts-node scripts/generateRawSnippet.ts && ts-node scripts/generateREADME.ts  ",
@@ -108,7 +111,9 @@
   },
   "devDependencies": {
     "@babel/preset-env": "7.14.2",
+    "@types/babel__core": "^7.1.18",
     "@types/jscodeshift": "^0.11.0",
+    "@types/prettier": "^2.4.4",
     "@types/react-dom": "^17.0.3",
     "@types/shallowequal": "^1.1.1",
     "esbuild": "^0.11.18",
