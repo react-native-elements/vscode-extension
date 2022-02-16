@@ -18,7 +18,7 @@
   ],
   "main": "./build/extension.js",
   "scripts": {
-    "prebuild": "ts-node scripts/generateIndex.ts && ts-node scripts/generateREADME.ts && prettier --write README.md ",
+    "prebuild": "ts-node scripts/generateRawSnippet.ts && ts-node scripts/generateREADME.ts  ",
     "prerelease": "npm run build && git add . && git commit -m 'PreRelease'  && release-it ",
     "release": "vsce publish",
     "build": "npm run -S esbuild-base -- --minify",
@@ -34,9 +34,6 @@
     "url": "https://github.com/react-native-elements/snippets"
   },
   "icon": "icon.png",
-  "engines": {
-    "vscode": "^0.10.5"
-  },
   "categories": [
     "Snippets"
   ],
@@ -74,107 +71,17 @@
       },
       {
         "command": "extension.rneButton",
-        "title": "Insert Simple Button Component",
+        "title": "Insert Button Component",
         "category": "React Native Elements Snippets"
       },
       {
         "command": "extension.rneButtonGroup",
-        "title": "Insert Button Group Component",
+        "title": "Insert  Component",
         "category": "React Native Elements Snippets"
       },
       {
         "command": "extension.rneButtonIcon",
-        "title": "Insert Button with Icon Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneButtonType",
-        "title": "Insert Button with types Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneCard",
-        "title": "Insert Basic Card Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneCheckBox",
-        "title": "Insert CheckBox Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneChip",
-        "title": "Insert Simple Chip Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneChipIcon",
-        "title": "Insert Chip with Icon Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneDivider",
-        "title": "Insert Divider Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneFAB",
-        "title": "Insert Floating Action Button Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneIcon",
-        "title": "Insert Icon  Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneImage",
-        "title": "Insert Image Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneLinearProgress",
-        "title": "Insert Linear Progress Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneLinearProgressIndeterminate",
-        "title": "Insert Linear Progress indeterminate variant Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneRadio",
-        "title": "Insert CheckBox Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneSearchBar",
-        "title": "Insert Search Bar Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneSlider",
-        "title": "Insert Slider Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneSpeedDial",
-        "title": "Insert Speed Dial Wrapper Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneSpeedDialAction",
-        "title": "Insert Speed Dial Action Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneText",
-        "title": "Insert Text Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneuCircularSlider",
-        "title": "Insert Universal Circular Slider Component",
+        "title": "Insert  Component",
         "category": "React Native Elements Snippets"
       }
     ]
@@ -218,6 +125,7 @@
   },
   "dependencies": {
     "@types/glob": "^7.2.0",
-    "react-docgen-typescript": "^2.2.2"
+    "react-docgen-typescript": "^2.2.2",
+    "react-native-elements": "github:react-native-elements/react-native-elements#base"
   }
 }

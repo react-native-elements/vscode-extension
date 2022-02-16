@@ -5,7 +5,7 @@ import Props from "./prop-def.json";
 import path from "path";
 
 export function main(basePath: string) {
-  const files = glob.sync(path.join(basePath, "components/*.tsx"));
+  const files = glob.sync(path.join(basePath, "*.tsx"));
 
   return files.map(parse);
 }
@@ -83,12 +83,7 @@ function parse(filename: string) {
                               const propType = type?.name?.replaceAll('"', "");
                               const propDefault = defaultValue?.value;
                               extendedProps.push(
-                                t.jsxAttribute(
-                                  t.jsxIdentifier(propName.value),
-                                  t.jsxExpressionContainer(
-                                    t.identifier(filter(propType, propDefault))
-                                  )
-                                )
+                                filter(propName.value, propType, propDefault)
                               );
                             }
                           });
@@ -122,12 +117,16 @@ function parse(filename: string) {
   };
 }
 
-function filter(propType = "", propDefault = "") {
-  if (!propType) return "";
+function filter(propName = "", propType = "", propDefault = "") {
   if (propType === "boolean") {
-    return "${#|true,false|}";
-  } else if (propType?.includes("|")) {
-    return `"\${#|${propType.replaceAll(" | ", ",")}|}"`;
+    return t.jsxAttribute(t.jsxIdentifier(`\${#:${propName}}`));
   }
-  return "";
+  let val = "$#";
+  if (propType?.includes("|")) {
+    val = `"\${#|${propType.replaceAll(" | ", ",")}|}"`;
+  }
+  return t.jsxAttribute(
+    t.jsxIdentifier(propName),
+    t.jsxExpressionContainer(t.identifier(val))
+  );
 }

@@ -1,4 +1,4 @@
-import { Component } from "../type";
+import { Component } from "./type";
 
 export const position = ["left", "right", "bottom", "top"];
 

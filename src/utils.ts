@@ -10,13 +10,3 @@ export function once<F extends Function>(fn: F): F {
     return result;
   } as any;
 }
-
-export function getSnippetImports(body: string): string[] {
-  const rx = /<([A-Z][A-Za-z]+)/g;
-  const components: Set<string> = new Set();
-  let match;
-  while ((match = rx.exec(body))) {
-    components.add(match[1]);
-  }
-  return [...components].sort();
-}
