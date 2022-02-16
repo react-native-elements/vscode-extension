@@ -1,7 +1,6 @@
 import * as vscode from "vscode";
 import loadSnippets from "./snippets";
 import getExistingImports from "./getExistingImports";
-import { getSnippetImports } from "./utils";
 class RNECompletionItem extends vscode.CompletionItem {
   imports: string[] | undefined;
 }
@@ -21,7 +20,7 @@ export async function activate(
     );
   }
 
-  const snippets = await loadSnippets();
+  const snippets = loadSnippets();
 
   function getAdditionalTextEdits({
     imports,
@@ -34,13 +33,12 @@ export async function activate(
     let existingImports: Set<string> | null;
     let insertPosition: vscode.Position = new vscode.Position(0, 0);
     let coreInsertPosition: vscode.Position | null = null;
-    let universeInsertPosition: vscode.Position | null = null;
     try {
       ({
         existingImports,
         insertPosition,
         coreInsertPosition,
-        universeInsertPosition,
+        // universeInsertPosition,
       } = getExistingImports(document));
     } catch (error) {
       existingImports = null;
@@ -50,15 +48,8 @@ export async function activate(
     const finalExistingImports = existingImports;
     if (finalExistingImports) {
       const coreImports = imports.filter(
-        (comp: string) =>
-          !comp.endsWith("Universe") && !finalExistingImports.has(comp)
+        (comp: string) => !finalExistingImports.has(comp)
       );
-      const universeImports = imports
-        .filter(
-          (comp: string) =>
-            comp.endsWith("Universe") && !finalExistingImports.has(comp)
-        )
-        .map((comp: string) => `${comp.replace("Universe", "")} as ${comp}`);
       if (coreImports.length) {
         if (coreInsertPosition) {
           additionalTextEdits.push(
@@ -78,31 +69,12 @@ export async function activate(
           );
         }
       }
-      if (universeImports.length) {
-        if (universeInsertPosition) {
-          additionalTextEdits.push(
-            vscode.TextEdit.insert(
-              universeInsertPosition,
-              ", " + universeImports.join(", ")
-            )
-          );
-        } else {
-          additionalTextEdits.push(
-            vscode.TextEdit.insert(
-              insertPosition,
-              `import { ${universeImports.join(
-                ", "
-              )} } from 'react-native-elements-universe'\n`
-            )
-          );
-        }
-      }
     }
     return additionalTextEdits;
   }
 
   for (const snippet of Object.values(snippets)) {
-    const { prefix, description } = snippet;
+    const { prefix, description, imports } = snippet;
     context.subscriptions.push(
       vscode.commands.registerCommand(`extension.${prefix}`, async () =>
         vscode.window.withProgress(
@@ -118,15 +90,14 @@ export async function activate(
             }>,
             token: vscode.CancellationToken
           ) => {
-            const body = (typeof snippet.body === "function"
-              ? snippet.body()
-              : snippet.body
+            const body = (
+              typeof snippet.body === "function" ? snippet.body() : snippet.body
             ).replace(/^\n|\n$/gm, "");
 
             if (token.isCancellationRequested) return;
 
             const additionalTextEdits = getAdditionalTextEdits({
-              imports: getSnippetImports(body),
+              imports: imports,
             });
 
             if (token.isCancellationRequested) return;
@@ -151,11 +122,10 @@ export async function activate(
   const getCompletionItems = ((): RNECompletionItem[] => {
     const result = [];
     for (const snippet of Object.values(snippets)) {
-      const { prefix, description, docKey, previewURL } = snippet;
+      const { prefix, description, docKey, previewURL, imports } = snippet;
 
-      const body = (typeof snippet.body === "function"
-        ? snippet.body?.()
-        : snippet.body
+      const body = (
+        typeof snippet.body === "function" ? snippet.body?.() : snippet.body
       ).replace(/^\n|\n$/gm, "");
 
       let extendedDoc = `**${description.trim()}**`;
@@ -171,7 +141,7 @@ export async function activate(
       const completion = new RNECompletionItem(prefix);
       completion.insertText = new vscode.SnippetString(body);
       completion.documentation = new vscode.MarkdownString(extendedDoc);
-      completion.imports = getSnippetImports(body);
+      completion.imports = imports;
       result.push(completion);
     }
     return result;
