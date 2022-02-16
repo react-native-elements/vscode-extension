@@ -2,9 +2,10 @@ import { transformSync, PluginItem, types as t } from "@babel/core";
 import fs from "fs";
 import glob from "glob";
 import Props from "./prop-def.json";
+import path from "path";
 
-export function main() {
-  const files = glob.sync("../components/*.tsx");
+export function main(basePath: string) {
+  const files = glob.sync(path.join(basePath, "components/*.tsx"));
 
   return files.map(parse);
 }
@@ -108,9 +109,14 @@ function parse(filename: string) {
       },
     ],
   });
+  let counter = 0;
   return {
+    prefix: filename.split("/").pop()?.replace(".tsx", ""),
     imports,
-    code: compiled?.code?.replace("export {};", ""),
+    body: compiled?.code
+      ?.replace("export {};", "")
+      .replace(/\$(?!#|\{)/g, () => "$" + String(counter++))
+      .replace(/#/g, () => String(counter++)),
     description,
     docKey,
   };

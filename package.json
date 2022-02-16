@@ -205,6 +205,8 @@
     "@types/react-dom": "^17.0.3",
     "@types/shallowequal": "^1.1.1",
     "esbuild": "^0.11.18",
+    "jscodeshift": "^0.12.0",
+    "jscodeshift-choose-parser": "^2.0.0",
     "prettier": "^2.2.1",
     "release-it": "^14.6.1",
     "semantic-release": "^17.0.0",
@@ -212,8 +214,10 @@
     "ts-node": "^9.1.1",
     "typescript": "4.2.4",
     "vsce": "^1.88.0",
-    "vscode": "^1.1.37",
-    "jscodeshift": "^0.12.0",
-    "jscodeshift-choose-parser": "^2.0.0"
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "@types/glob": "^7.2.0",
+    "react-docgen-typescript": "^2.2.2"
   }
 }
