@@ -1,10 +1,10 @@
 import Components from "./components";
 import { Snippet } from "./types";
 
-export default async function loadSnippets(): Promise<Record<string, Snippet>> {
+export default function loadSnippets(): Record<string, Snippet> {
   const result = {};
   Components.map((file) => {
-    const { prefix, description, body, docKey } = file;
+    const { prefix, description, body, docKey, imports } = file;
     if (!prefix || typeof prefix !== "string") {
       throw new Error(
         `src/components/${prefix}: prefix must be a string if exported`
@@ -26,7 +26,8 @@ export default async function loadSnippets(): Promise<Record<string, Snippet>> {
       body,
       docKey,
       previewURL: prefix,
+      imports: imports,
     };
   });
-  return Promise.resolve(result);
+  return result;
 }
