@@ -1,10 +1,8 @@
-import { Component } from "./type";
+makeSnippet(({ Avatar }) => (
+  <Avatar title="$#" __options={["size", "rounded"]} $ />
+));
 
-export const description = "Avatar with Badge";
-
-export const docKey = "badge";
-
-export const body: Component = ({ Avatar, Badge }) => (
+makeSnippet(({ Avatar, Badge }) => (
   <>
     <Avatar
       source={{
@@ -19,4 +17,4 @@ export const body: Component = ({ Avatar, Badge }) => (
       $
     />
   </>
-);
+));

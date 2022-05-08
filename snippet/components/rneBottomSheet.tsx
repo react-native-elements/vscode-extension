@@ -1,10 +1,6 @@
-import { Component } from "./type";
+import React from "react";
 
-export const description = "Bottom Sheet";
-
-export const docKey = "bottomsheet";
-
-export const body: Component = ({ BottomSheet }) => (
+makeSnippet(({ BottomSheet }) => (
   <BottomSheet
     __options={["isVisible", "onBackdropPress"]}
     containerStyle={{ backgroundColor: "$#" }}
@@ -12,4 +8,4 @@ export const body: Component = ({ BottomSheet }) => (
   >
     $#
   </BottomSheet>
-);
+));
