@@ -131,6 +131,6 @@
   "dependencies": {
     "@types/glob": "^7.2.0",
     "react-docgen-typescript": "^2.2.2",
-    "react-native-elements": "github:react-native-elements/react-native-elements#base"
+    "@rneui/base": "github:react-native-elements/react-native-elements#base"
   }
 }

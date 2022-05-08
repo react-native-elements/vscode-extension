@@ -4,17 +4,12 @@ import glob from "glob";
 import Props from "./prop-def.json";
 import path from "path";
 
-export function main(basePath: string) {
-  const files = glob.sync(path.join(basePath, "*.tsx"));
-
-  return files.map(parse);
-}
+const a = parse(path.join(__dirname, "../components/Button.snippet.tsx"));
+console.log(a);
 
 function parse(filename: string) {
   const file = fs.readFileSync(filename, "utf8");
-  const imports: string[] = [];
-  let description = "",
-    docKey = "";
+  const d = [];
   const compiled = transformSync(file, {
     filename,
     presets: ["@babel/preset-typescript"],
@@ -22,47 +17,20 @@ function parse(filename: string) {
       function myCustomPlugin(): PluginItem {
         return {
           visitor: {
-            ImportDeclaration(path) {
-              path.remove();
-            },
-            ExportNamedDeclaration(path) {
-              if (
-                t.isExportNamedDeclaration(path) &&
-                t.isVariableDeclaration(path.node.declaration)
-              ) {
-                path.node.declaration.declarations.forEach((declaration) => {
-                  const { id, init } = declaration;
-                  if (t.isArrowFunctionExpression(init)) {
-                    const { params } = init;
-                    const param = params[0];
-                    if (t.isObjectPattern(param)) {
-                      param.properties.forEach((p) => {
-                        if (t.isObjectProperty(p) && t.isIdentifier(p.key)) {
-                          imports.push(p.key.name);
-                        }
-                      });
-                    }
-                    path.replaceWith(init.body);
-                  } else if (t.isIdentifier(id)) {
-                    if (t.isStringLiteral(init)) {
-                      if (id.name === "description") {
-                        description = init.value;
-                      }
-                      if (id.name === "docKey") {
-                        docKey = init.value;
-                      }
-                      path.remove();
-                    } else {
-                      path.remove();
-                    }
-                  }
-                });
-              }
-            },
             JSXOpeningElement(path) {
-              let ComponentName: keyof typeof Props;
-              if (t.isJSXIdentifier(path.node.name)) {
-                ComponentName = path.node.name.name as keyof typeof Props;
+              if (
+                t.isJSXIdentifier(path.node.name) ||
+                t.isJSXMemberExpression(path.node.name)
+              ) {
+                let ComponentName: string;
+                if (t.isJSXIdentifier(path.node.name)) {
+                  ComponentName = path.node.name.name as keyof typeof Props;
+                } else {
+                  if (t.isJSXIdentifier(path.node.name.object)) {
+                    ComponentName = path.node.name.object
+                      .name as keyof typeof Props;
+                  }
+                }
 
                 const ComponentProps = Props[ComponentName];
 
@@ -99,24 +67,57 @@ function parse(filename: string) {
                 });
               }
             },
+            ExpressionStatement(path) {
+              const { node } = path;
+              if (node.expression.type === "CallExpression") {
+                const imps = new Set();
+                let desc = "";
+                let key = "";
+                const [m, n, o] = node.expression.arguments;
+                if (t.isStringLiteral(n)) {
+                  key = n.value;
+                }
+                if (t.isStringLiteral(o)) {
+                  desc = o.value;
+                }
+                if (t.isArrowFunctionExpression(m)) {
+                  const { params } = m;
+                  if (params[0].type === "ObjectPattern") {
+                    params[0].properties.forEach((prop) => {
+                      if (prop.type === "ObjectProperty") {
+                        const { key } = prop;
+                        if (key.type === "Identifier") {
+                          imps.add(key.name);
+                        }
+                      }
+                    });
+                  }
+                  path.replaceWith(m.body);
+                }
+                d.push({ key, desc, imps: [...imps] });
+                path.addComment("trailing", "");
+              }
+            },
           },
         };
       },
     ],
   });
-  let counter = 0;
-  return {
-    prefix: filename.split("/").pop()?.replace(".tsx", ""),
-    imports,
-    body: compiled?.code
-      ?.replace("export {};", "")
-      .replace(/;$/, "")
-      .replace(/\$(?!#|\{)/g, () => "$" + String(counter++))
-      .replace(/#/g, () => String(counter++))
-      .trim(),
-    description,
-    docKey,
-  };
+  compiled?.code
+    .trim()
+    .split("/**/")
+    .map((snippet, index) => {
+      let counter = 0;
+      const body = snippet
+        .replace(/;$/, "")
+        .replace(/\$(?!#|\{)/g, () => "$" + String(counter++))
+        .replace(/#/g, () => String(counter++))
+        .trim();
+
+      d[index] && (d[index]["body"] = body);
+    });
+
+  return d;
 }
 
 function filter(propName = "", propType = "", propDefault = "") {
@@ -131,4 +132,10 @@ function filter(propName = "", propType = "", propDefault = "") {
     t.jsxIdentifier(propName),
     t.jsxExpressionContainer(t.identifier(val))
   );
+}
+
+export function main(basePath: string) {
+  const files = glob.sync(path.join(basePath, "*.tsx"));
+
+  return files.map(parse);
 }
