@@ -5,10 +5,13 @@ interface NewProps<T> {
   $?: boolean;
   __options?: Array<keyof T>;
 }
+type Booleanize<T> = {
+  [K in keyof T]?: React.ReactNode;
+};
 
 type Component<T = typeof RNE> = {
   [K in keyof T]?: T[K] extends RneFunctionComponent<infer H> & infer Q
-    ? RneFunctionComponent<H & NewProps<H>> & Component<Q>
+    ? RneFunctionComponent<Booleanize<H> & NewProps<H>> & Component<Q>
     : T[K];
 };
 
