@@ -1,17 +1,16 @@
 import { transformSync, PluginItem, types as t } from "@babel/core";
 import fs from "fs";
-import glob from "glob";
 import Props from "./prop-def.json";
 import path from "path";
 
-const a = parse(path.join(__dirname, "../components/Button.snippet.tsx"));
-console.log(a);
+export function parse(filePath: string) {
+  const file = fs.readFileSync(filePath, "utf8");
+  const fileName = path.basename(filePath);
+  const fileKey = fileName.split(".")[0];
 
-function parse(filename: string) {
-  const file = fs.readFileSync(filename, "utf8");
   const d = [];
   const compiled = transformSync(file, {
-    filename,
+    filename: filePath,
     presets: ["@babel/preset-typescript"],
     plugins: [
       function myCustomPlugin(): PluginItem {
@@ -94,7 +93,11 @@ function parse(filename: string) {
                   }
                   path.replaceWith(m.body);
                 }
-                d.push({ key, desc, imps: [...imps] });
+                d.push({
+                  prefix: key || fileKey,
+                  description: desc,
+                  imports: [...imps],
+                });
                 path.addComment("trailing", "");
               }
             },
@@ -132,10 +135,4 @@ function filter(propName = "", propType = "", propDefault = "") {
     t.jsxIdentifier(propName),
     t.jsxExpressionContainer(t.identifier(val))
   );
-}
-
-export function main(basePath: string) {
-  const files = glob.sync(path.join(basePath, "*.tsx"));
-
-  return files.map(parse);
 }

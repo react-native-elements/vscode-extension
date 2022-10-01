@@ -5,9 +5,6 @@ interface NewProps<T> {
   $?: boolean;
   __options?: Array<keyof T>;
 }
-// type Booleanize<T> = {
-//   [K in keyof T]?: React.ReactNode;
-// };
 
 type Component<T = typeof RNE> = {
   [K in keyof T]?: T[K] extends RneFunctionComponent<infer H> & infer Q
@@ -15,12 +12,12 @@ type Component<T = typeof RNE> = {
     : T[K];
 };
 
-declare global {
-  var $0: any;
+export const makeSnippet: (
+  snip: (components: Component) => JSX.Element,
+  title?: string,
+  description?: string,
+  docKey?: string,
+  previewURL?: string
+) => void = () => {};
 
-  var makeSnippet: (
-    snip: (components: Component) => JSX.Element,
-    title?: string,
-    description?: string
-  ) => void;
-}
+export const $0: any = undefined;
