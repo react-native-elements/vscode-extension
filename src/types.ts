@@ -14,5 +14,6 @@ export type Snippet = {
   description: string;
   body: SnippetBody;
   docKey?: string;
+  imports?: string[];
   previewURL?: string;
 };
