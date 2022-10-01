@@ -5,4 +5,7 @@ import fs from "fs";
 
 const snips = parse(path.join(__dirname, "components.tsx"));
 
-fs.writeFileSync("out.js", "export default" + JSON.stringify(snips));
+fs.writeFileSync(
+  path.join("src", "components.ts"),
+  "export default" + JSON.stringify(snips)
+);
