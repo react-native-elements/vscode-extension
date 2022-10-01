@@ -62,9 +62,7 @@ export async function activate(
           additionalTextEdits.push(
             vscode.TextEdit.insert(
               insertPosition,
-              `import { ${coreImports.join(
-                ", "
-              )} } from 'react-native-elements'\n`
+              `import { ${coreImports.join(", ")} } from '@rneui/themed'\n`
             )
           );
         }
@@ -135,7 +133,7 @@ export async function activate(
         : "";
       extendedDoc += `\n\n **Preview:** \n\n ![${prefix}](${
         previewURL ||
-        `https://cdn.jsdelivr.net/gh/react-native-elements/snippets/img/${prefix}.png`
+        `https://cdn.jsdelivr.net/gh/react-native-elements/vscode-extension/img/${prefix}.png`
       }) `;
 
       const completion = new RNECompletionItem(prefix);

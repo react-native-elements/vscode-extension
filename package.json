@@ -8,7 +8,8 @@
   "keywords": [
     "snippets",
     "react-native",
-    "react-native-elements"
+    "react-native-elements",
+    "rneui"
   ],
   "contributors": [
     {
@@ -34,7 +35,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/react-native-elements/snippets"
+    "url": "https://github.com/react-native-elements/vscode-extension"
   },
   "icon": "icon.png",
   "categories": [

@@ -34,7 +34,7 @@ export default function getExistingImports(document: vscode.TextDocument): {
       if (node.loc) insertLine = node.loc.end.line;
       const source = node.source.value;
       if (typeof source !== "string") return;
-      if (source === "react-native-elements") {
+      if (source === "@rneui/themed") {
         for (const specifier of node?.specifiers) {
           if (specifier.type !== "ImportSpecifier") continue;
           const { loc } = specifier;
