@@ -1206,9 +1206,20 @@
   dependencies:
     "@octokit/openapi-types" "^7.2.0"
 
-"@rneui/base@github:react-native-elements/react-native-elements#base":
-  version "4.0.0-rc.2"
-  resolved "https://codeload.github.com/react-native-elements/react-native-elements/tar.gz/d7505bbec2dfec28a6c6180f7910631460f7ffc2"
+"@rneui/base-old@https://gitpkg.now.sh/react-native-elements/react-native-elements/packages/base?next":
+  version "4.0.0-rc.6"
+  resolved "https://gitpkg.now.sh/react-native-elements/react-native-elements/packages/base?next#bb3941af33cd24c4fb3216ac17d7a0121598c1fc"
+  dependencies:
+    "@types/react-native-vector-icons" "^6.4.10"
+    color "^3.2.1"
+    deepmerge "^4.2.2"
+    hoist-non-react-statics "^3.3.2"
+    react-native-ratings "^8.1.0"
+    react-native-size-matters "^0.4.0"
+
+"@rneui/base@react-native-elements/react-native-elements#base":
+  version "4.0.0-rc.6"
+  resolved "https://codeload.github.com/react-native-elements/react-native-elements/tar.gz/7c027c1741f1c5f5d628fdd07891437c7488769d"
   dependencies:
     "@types/react-native-vector-icons" "^6.4.10"
     color "^3.2.1"

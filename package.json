@@ -50,32 +50,47 @@
     "commands": [
       {
         "command": "extension.rneAvatar",
-        "title": "Insert Avatar Component",
-        "category": "React Native Elements Snippets"
-      },
-      {
-        "command": "extension.rneAvatarBadge",
-        "title": "Insert Avatar with Badge Component",
+        "title": "Insert  Component",
         "category": "React Native Elements Snippets"
       },
       {
         "command": "extension.rneBadge",
-        "title": "Insert Badge Component",
+        "title": "Insert Badge Component Component",
         "category": "React Native Elements Snippets"
       },
       {
-        "command": "extension.rneBadgeMini",
-        "title": "Insert Mini Badge Component",
+        "command": "extension.rneBadgeValue",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneBadgeAvatar",
+        "title": "Insert  Component",
         "category": "React Native Elements Snippets"
       },
       {
         "command": "extension.rneBottomSheet",
-        "title": "Insert Bottom Sheet Component",
+        "title": "Insert  Component",
         "category": "React Native Elements Snippets"
       },
       {
         "command": "extension.rneButton",
-        "title": "Insert Button Component",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneButtonIcon",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneButtonType",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneButtonColor",
+        "title": "Insert  Component",
         "category": "React Native Elements Snippets"
       },
       {
@@ -84,7 +99,82 @@
         "category": "React Native Elements Snippets"
       },
       {
-        "command": "extension.rneButtonIcon",
+        "command": "extension.rneCard",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneCheckbox",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneChip",
+        "title": "Insert Chip component Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneChipIcon",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneDivider",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneFab",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneIcon",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneImage",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneLinearProgressDeterminate",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneLinearProgress",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneRadio",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.components",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneSlider",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneSpeedDial",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneSpeedDialAction",
+        "title": "Insert  Component",
+        "category": "React Native Elements Snippets"
+      },
+      {
+        "command": "extension.rneText",
         "title": "Insert  Component",
         "category": "React Native Elements Snippets"
       }
@@ -130,7 +220,8 @@
     "vscode": "^1.1.37"
   },
   "dependencies": {
-    "@rneui/base": "github:react-native-elements/react-native-elements#base",
+    "@rneui/base-old": "https://gitpkg.now.sh/react-native-elements/react-native-elements/packages/base?next",
+    "@rneui/base": "react-native-elements/react-native-elements#base",
     "@types/glob": "^7.2.0",
     "react-docgen-typescript": "^2.2.2",
     "react-dom": "^18.1.0"

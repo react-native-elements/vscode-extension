@@ -97,6 +97,8 @@ export function parse(filePath: string) {
                   prefix: key || fileKey,
                   description: desc,
                   imports: [...imps],
+                  docKey: "",
+                  previewURL: "",
                 });
                 path.addComment("trailing", "");
               }
