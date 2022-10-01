@@ -21,3 +21,4 @@ export const makeSnippet: (
 ) => void = () => {};
 
 export const $0: any = undefined;
+export const $: any = undefined;

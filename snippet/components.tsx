@@ -1,8 +1,8 @@
 import React from "react";
-import { makeSnippet, $0 } from "./config";
+import { makeSnippet, $ } from "./config";
 
 makeSnippet(
-  ({ Avatar }) => <Avatar title="$0" __options={["size", "rounded"]} $ />,
+  ({ Avatar }) => <Avatar title="$" __options={["size", "rounded"]} $ />,
   "rneAvatar"
 );
 
@@ -13,7 +13,7 @@ makeSnippet(
 );
 
 makeSnippet(
-  ({ Badge }) => <Badge __options={["status"]} value="$0" $ />,
+  ({ Badge }) => <Badge __options={["status"]} value="$" $ />,
   "rneBadgeValue"
 );
 
@@ -22,7 +22,7 @@ makeSnippet(
     <>
       <Avatar
         source={{
-          uri: "$0",
+          uri: "$",
         }}
         __options={["size"]}
         $
@@ -41,51 +41,48 @@ makeSnippet(
   ({ BottomSheet }) => (
     <BottomSheet
       __options={["isVisible", "onBackdropPress"]}
-      containerStyle={{ backgroundColor: "$0" }}
+      containerStyle={{ backgroundColor: "$" }}
       $
     >
-      $0
+      $
     </BottomSheet>
   ),
   "rneBottomSheet"
 );
 
 makeSnippet(
-  ({ Button }) => <Button __options={["onPress", "title"]} $ />,
+  ({ Button }) => <Button title={$} __options={["onPress", "title"]} $ />,
   "rneButton"
 );
 
 makeSnippet(
-  ({ Button }) => <Button __options={["icon", "iconPosition", "onPress"]} $ />,
+  ({ Button }) => <Button icon={$} __options={["iconPosition", "onPress"]} $ />,
   "rneButtonIcon"
 );
 
 makeSnippet(
-  ({ Button }) => <Button __options={["type", "title", "onPress"]} $ />,
+  ({ Button }) => <Button title={$} __options={["type", "onPress"]} $ />,
   "rneButtonType"
 );
 
 makeSnippet(
+  ({ Button }) => <Button title={$} __options={["onPress", "color"]} $ />,
+  "rneButtonColor"
+);
+
+makeSnippet(
   ({ ButtonGroup }) => (
-    <ButtonGroup __options={["onPress", "selectedIndex", "button"]} $ />
+    <ButtonGroup __options={["onPress", "selectedIndex"]} button={$} $ />
   ),
   "rneButtonGroup"
 );
 
 makeSnippet(
-  ({ Card }) => (
+  ({ Card, Text }) => (
     <Card>
-      <Card.Title>$0</Card.Title>
-      {/* \${#:
-<Card.Divider/>}
-<Card.Image source={$0}>
- \${#:
-  <Text style={{marginBottom: 10}}>
-  $0 
-  </Text>
-  }
-      $0
-</Card.Image> */}
+      <Card.Title>$</Card.Title>
+      <Card.Image source={$}></Card.Image>
+      <Text style={{ marginBottom: 10 }}>$</Text>
     </Card>
   ),
   "rneCard"
@@ -94,19 +91,18 @@ makeSnippet(
 makeSnippet(
   ({ CheckBox }) => (
     <CheckBox
-      title="$0"
-      iconType="\${#${iconType}}"
-      checkedIcon="$0"
-      uncheckedIcon="$0"
-      checkedColor="$0"
-      checked={$0}
+      title={$}
+      __options={["iconType", "checked"]}
+      checkedIcon={$}
+      uncheckedIcon={$}
+      checkedColor={$}
     />
   ),
   "rneCheckbox"
 );
 
 makeSnippet(
-  ({ Chip }) => <Chip __options={["type", "title"]} />,
+  ({ Chip }) => <Chip __options={["type"]} title={$} />,
   "rneChip",
   "Chip component"
 );
@@ -114,43 +110,43 @@ makeSnippet(
 makeSnippet(
   ({ Chip }) => (
     <Chip
-      __options={["type", "title"]}
+      __options={["type"]}
+      title={$}
       icon={{
-        name: "$0",
-        type: "$0",
-        color: "$0",
+        name: $,
+        type: $,
+        color: $,
       }}
     />
   ),
   "rneChipIcon"
 );
 
-makeSnippet(({ Divider }) => <Divider />, "rneDivider");
+makeSnippet(({ Divider }) => <Divider $ />, "rneDivider");
 
 makeSnippet(
-  ({ FAB }) => <FAB __options={["placement", "size", "title"]} $ />,
+  ({ FAB }) => <FAB __options={["placement", "size"]} title={$} $ />,
   "rneFab"
 );
 
 makeSnippet(
-  ({ Icon }) => <Icon name="$0" __options={["size", "type", "color"]} $ />,
+  ({ Icon }) => <Icon name="$" __options={["size", "type"]} color={$} $ />,
   "rneIcon"
 );
 
 makeSnippet(
   ({ Image }) => (
-    <Image
-      source={{ uri: "$0" }}
-      style={{ width: $0, height: $0 }}
-      // \${#:PlaceholderContent={$0}}
-    />
+    <Image source={{ uri: "$" }} style={{ width: $, height: $ }} />
   ),
   "rneImage"
 );
 
-makeSnippet(({ LinearProgress }) => (
-  <LinearProgress __options={["color"]} variant="determinate" value={$0} $ />
-));
+makeSnippet(
+  ({ LinearProgress }) => (
+    <LinearProgress __options={["color"]} variant="determinate" value={$} $ />
+  ),
+  "rneLinearProgressDeterminate"
+);
 
 makeSnippet(
   ({ LinearProgress }) => <LinearProgress color="\${#${color}}" $ />,
@@ -160,28 +156,29 @@ makeSnippet(
 makeSnippet(
   ({ CheckBox }) => (
     <CheckBox
-      title="$0"
+      title="$"
       iconType="material"
       checkedIcon="radio-button-checked"
       uncheckedIcon="radio-button-unchecked"
-      checkedColor="$0"
-      checked={$0}
+      checkedColor="$"
+      checked={$}
     />
   ),
-  "rneCheckBox"
+  "rneRadio"
 );
 
 makeSnippet(({ SearchBar }) => (
-  <SearchBar placeholder="$0" onChangeText={$0} value={$0} />
+  <SearchBar placeholder="$" onChangeText={$} value={$} />
 ));
+
 makeSnippet(
   ({ Slider }) => (
     <Slider
-      value={$0}
-      onValueChange={$0}
-      maximumValue={$0}
-      minimumValue={$0}
-      thumbProps={{ $0 }}
+      value={$}
+      onValueChange={$}
+      maximumValue={$}
+      minimumValue={$}
+      thumbProps={{ $ }}
     />
   ),
   "rneSlider"
@@ -190,13 +187,13 @@ makeSnippet(
 makeSnippet(
   ({ SpeedDial }) => (
     <SpeedDial
-      isOpen={$0}
-      onOpen={$0}
-      onClose={$0}
-      icon={{ name: "$0" }}
-      openIcon={{ name: "$0" }}
+      isOpen={$}
+      onOpen={$}
+      onClose={$}
+      icon={{ name: "$" }}
+      openIcon={{ name: "$" }}
     >
-      $0
+      $
     </SpeedDial>
   ),
   "rneSpeedDial"
@@ -204,15 +201,15 @@ makeSnippet(
 
 makeSnippet(
   ({ SpeedDial }) => (
-    <SpeedDial.Action icon={{ name: "$0" }} title="$0" onPress={$0} />
+    <SpeedDial.Action icon={{ name: "$" }} title="$" onPress={$} />
   ),
   "rneSpeedDialAction"
 );
 
 makeSnippet(
   ({ Text }) => (
-    <Text __options={["h1", "h2", "h3"]} $1styles={{ $0 }}>
-      $0
+    <Text __options={["h1", "h2", "h3"]} style={{ $ }}>
+      $
     </Text>
   ),
   "rneText"

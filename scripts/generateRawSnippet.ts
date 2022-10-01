@@ -1,12 +1,11 @@
-import { main } from "./parser/parser";
-import fs from "fs";
+// import {} from "./declaration.parser";
+import { parse } from "../snippet/parser/component.parser";
 import path from "path";
+import fs from "fs";
 
-const basePath = path.join(__dirname, "..", "components");
-
-const snippet = main(basePath);
+const snips = parse(path.join(__dirname, "../snippet/components.tsx"));
 
 fs.writeFileSync(
-  path.join(__dirname, "../src/components.ts"),
-  "export default " + JSON.stringify(snippet)
+  path.join("src", "components.ts"),
+  "export default" + JSON.stringify(snips)
 );

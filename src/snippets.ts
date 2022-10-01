@@ -4,7 +4,8 @@ import { Snippet } from "./types";
 export default function loadSnippets(): Record<string, Snippet> {
   const result = {};
   Components.map((file) => {
-    const { prefix, description, body, docKey, imports } = file;
+    const { prefix, description, body, docKey, imports } =
+      file as unknown as Snippet;
     // if (!prefix || typeof prefix !== "string") {
     //   throw new Error(
     //     `src/components/${prefix}: prefix must be a string if exported`
