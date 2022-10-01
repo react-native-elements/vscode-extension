@@ -51,7 +51,7 @@ makeSnippet(
 );
 
 makeSnippet(
-  ({ Button }) => <Button title={$} __options={["onPress", "title"]} $ />,
+  ({ Button }) => <Button title={$} __options={["onPress"]} $ />,
   "rneButton"
 );
 

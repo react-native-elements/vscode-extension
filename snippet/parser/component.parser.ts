@@ -112,11 +112,12 @@ export function parse(filePath: string) {
     .trim()
     .split("/**/")
     .map((snippet, index) => {
-      let counter = 0;
+      let counter = 1;
+
       const body = snippet
         .replace(/;$/, "")
-        .replace(/\$(?!#|\{)/g, () => "$" + String(counter++))
-        .replace(/#/g, () => String(counter++))
+        .replace(/\$/g, () => "$" + String(counter++))
+        .replace(/\$(\d+){#/g, "${$1")
         .trim();
 
       d[index] && (d[index]["body"] = body);
@@ -129,7 +130,7 @@ function filter(propName = "", propType = "", propDefault = "") {
   if (propType === "boolean") {
     return t.jsxAttribute(t.jsxIdentifier(`\${#:${propName}}`));
   }
-  let val = "$#";
+  let val = "$";
   if (propType?.includes("|")) {
     val = `"\${#|${propType.replaceAll(" | ", ",")}|}"`;
   }
