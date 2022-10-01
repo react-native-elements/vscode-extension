@@ -93,7 +93,11 @@ export function parse(filePath: string) {
                   }
                   path.replaceWith(m.body);
                 }
-                d.push({ key: key || fileKey, desc, imps: [...imps] });
+                d.push({
+                  prefix: key || fileKey,
+                  description: desc,
+                  imports: [...imps],
+                });
                 path.addComment("trailing", "");
               }
             },

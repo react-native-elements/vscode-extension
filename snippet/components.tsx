@@ -7,6 +7,17 @@ makeSnippet(
 );
 
 makeSnippet(
+  ({ Badge }) => <Badge __options={["status"]} $ />,
+  "rneBadge",
+  "Badge Component"
+);
+
+makeSnippet(
+  ({ Badge }) => <Badge __options={["status"]} value="$0" $ />,
+  "rneBadgeValue"
+);
+
+makeSnippet(
   ({ Avatar, Badge }) => (
     <>
       <Avatar
@@ -24,16 +35,6 @@ makeSnippet(
     </>
   ),
   "rneBadgeAvatar"
-);
-
-makeSnippet(
-  ({ Badge, Text }) => <Badge __options={["status"]} $ />,
-  "rneBadge"
-);
-
-makeSnippet(
-  ({ Badge }) => <Badge __options={["status"]} value="$0" $ />,
-  "rneBadgeValue"
 );
 
 makeSnippet(
