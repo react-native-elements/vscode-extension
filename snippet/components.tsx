@@ -214,3 +214,12 @@ makeSnippet(
   ),
   "rneText"
 );
+
+makeSnippet(
+  ({ ListItem }) => (
+    <ListItem key={{ $ }} bottomDivider>
+      $
+    </ListItem>
+  ),
+  "rneListItem"
+);
